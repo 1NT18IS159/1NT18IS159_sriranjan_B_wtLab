@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment and Decrement Text Size</title>
+</head>
+<body bgcolor = "lightblue">
+    <p>Enter the size that you want to increase the font by: </p>
+    <input name="searchTxt1" type="text" maxlength="2" id="searchTxt1" class="searchField"/>
+    <input type="button" value="Increase Font Size" onclick="increaseFontSizeBy10px()">
+    <p style="text-align: center;" id="a1">Play with the size of this text!</p>
+
+    <p>Enter the size that you want to decrease the font by: </p>
+    <input name="searchTxt2" type="text" maxlength="2" id="searchTxt2" class="searchField"/>
+    <input type="button" value="Decrease Font Size" onclick="decreaseFontSizeBy10px()">    
+        
+    <script>
+        function increaseFontSizeBy10px() {
+            input1 = document.getElementById("searchTxt1").value;
+            x = parseInt(input1);
+            text = document.getElementById('a1');
+            style = window.getComputedStyle(text, null).getPropertyValue('font-size');
+            
+            //Window.getComputedStyle() method returns an object containing the values of all CSS properties of an element. Individual CSS property values are accessed through APIs provided by the object
+            
+            //We have used CSSStyleDeclaration Object Methods. This is an object which has been invoked by the window.getComputedStyle() which is a WEB_API
+            
+            //We have used the getPropertyValue() which returns the value of the specified CSS property. Here we have specified 'font-size'. It generates a string as the output
+            
+            currentSize = parseFloat(style);
+            
+            //The parseFloat() function parses a string and returns a floating point number
+
+            text.style.fontSize = (currentSize + x) + 'px';
+        }
+    
+        function decreaseFontSizeBy10px() {
+            input2 = document.getElementById("searchTxt2").value;
+            y = parseInt(input2);
+            text = document.getElementById('a1');
+            style = window.getComputedStyle(text, null).getPropertyValue('font-size');
+            currentSize = parseFloat(style);
+            text.style.fontSize = (currentSize - y) + 'px';
+        }
+    </script>
+</body>
+</html>
